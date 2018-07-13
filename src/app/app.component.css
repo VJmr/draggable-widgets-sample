@@ -19,3 +19,6 @@
     cursor: pointer;
     background: white;
 }   
+.pull-right{
+    float: right;
+}
