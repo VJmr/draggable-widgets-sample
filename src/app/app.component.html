@@ -1,51 +1,43 @@
-<div class="container bg">
+<div class="row">
+  <div class="col-1">
+    <div class="px-2" *ngFor="let tile of tiles">
+    {{tile.name}}
+    <label class="switch">
+    <input [(ngModel)]="tile.show" (change)="onChange($event, tile.position)" type="checkbox">
+    <span class="slider"></span>
+    </label>
+    </div>
+  </div>
+  <div class="col-10">
   <div class="row">
     <div class="col-7">
-      <div [dragula]='"first-bag"'>
-       <div *ngIf="false" class="box">
-         A
-         <div class="pull-right">K</div>
+      <div [dragula]='"first-bag"' *ngFor="let tile of tiles">
+       <div *ngIf="tile.show && tile.size === 'large'" class="box">
+         <h1>{{tile.name}}</h1>
+         <div class="content">
+              <h2>{{ tile.data.title}}</h2>
+              <h6>{{ tile.data.description}}</h6>
+         </div>
+         <div class="close" (click)="close(tile.position)">CLOSE</div>
        </div>
-      </div>
-      <div [dragula]='"first-bag"'>
-        <div class="box">
-          B
-         <div class="pull-right">K</div>
-        </div>
-      </div>
-      <div [dragula]='"first-bag"'>
-        <div class="box">
-          C
-          <div class="pull-right">K</div>
-        </div>
       </div>
     </div>
     <div class="col-5">
-      <div [dragula]='"second-bag"'>
-        <div class="small-box">
-          W
-          <div class="pull-right">K</div>
-        </div>
-      </div>
-      <div [dragula]='"second-bag"'>
-        <div class="small-box">
-          X
-          <div class="pull-right">K</div>
-        </div>
-      </div>
-      <div [dragula]='"second-bag"'>
-        <div class="small-box">
-          Y
-          <div class="pull-right">K</div>
-        </div>
-      </div>
-      <div [dragula]='"second-bag"'>
-        <div class="small-box">
-          Z
-          <div class="pull-right">K</div>
-        </div>
+      <div [dragula]='"first-bag"' *ngFor="let tile of tiles">
+       <div *ngIf="tile.show  && tile.size === 'small'" class="small-box">
+         <h1>{{tile.name}}</h1>
+         <div class="content">
+              <h2>{{ tile.data.title}}</h2>
+              <h6>{{ tile.data.description}}</h6>
+         </div>
+         <div class="close" (click)="close(tile.position)">CLOSE</div>
+       </div>
       </div>
     </div>
   </div>
+  </div>
 </div>
+
+
+
 
